@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name           CookieClicker Bot
 // @namespace      https://github.com/GottZ/CookieClickerBot
-// @version        0.2
+// @version        0.2.1
 // @description    cookie clicker herp derp derp
 // @author         GottZ
+// @match          https://orteil.dashnet.org/cookieclicker/
 // @match          http://orteil.dashnet.org/cookieclicker/
 // @grant          unsafeWindow
 // @run-at         document-idle
