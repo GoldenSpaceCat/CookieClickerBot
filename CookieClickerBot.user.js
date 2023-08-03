@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           CookieClicker Bot
 // @namespace      https://github.com/GottZ/CookieClickerBot
-// @version        0.3.0
+// @version        0.4.0
 // @description    cookie clicker herp derp derp
 // @author         GottZ
 // @match          https://orteil.dashnet.org/cookieclicker/
@@ -140,6 +140,7 @@
     const percButton = ce('a', {parent: controlContainer, textContent: 'percs', href: '#'});
     const factsButton = ce('a', {parent: controlContainer, textContent: 'factories', href: '#'});
     const shimmerButton = ce('a', {parent: controlContainer, textContent: 'golden cookies', href: '#'});
+    const farmButton = ce('a', {parent: controlContainer, textContent: 'farm stuff', href: '#'});
     const bankButton = ce('a', {parent: controlContainer, textContent: 'bank stuff', href: '#'});
     const fullscreenButton = ce('a', {parent: controlContainer, textContent: 'fullscreen', href: '#'});
 
@@ -149,6 +150,7 @@
         percs: false,
         facts: false,
         shimmers: false,
+        farm: false,
         bank: false,
         fullscreen: fscreen.check(),
     };
@@ -165,6 +167,7 @@
                     percs: percButton,
                     facts: factsButton,
                     shimmers: shimmerButton,
+                    farm: farmButton,
                     bank: bankButton,
                     fullscreen: fullscreenButton
                 })
@@ -356,6 +359,45 @@
     };
 
     {
+        const farm = {};
+        const func = () => {
+            const minigame = Game.Objects.Farm.minigame;
+            [...document.getElementById("gardenPlot").querySelectorAll("div[id^=gardenTileIcon]")]
+            .filter(x=>x.style.display == "block")
+            .filter(x=>x.style.opacity < 1)
+            .map(n=>[...n.id.match(/-(\d+)-(\d+)$/)].slice(1).map(x=>+x))
+            .filter(coord => {
+                const [type, maturity] = minigame.getTile(...coord);
+                const plant = minigame.plantsById[type -1];
+                return !("immortal" in plant && plant.immortal);
+            })
+            .forEach(coord => minigame.clickTile(...coord));
+        }
+        farmButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!Game.Objects.Farm.minigameLoaded) {
+                return;
+            }
+            states.farm = !states.farm;
+
+            const minigame = Game.Objects.Farm.minigame;
+
+            if (!states.farm) {
+                minigame.logic = farm.logic;
+                return;
+            }
+
+            farm.logic = minigame.logic;
+            minigame.logic = () => {
+                return farm.logic.call(Game.Objects.Farm.minigame);
+                func();
+            }
+            func();
+        });
+    };
+
+    {
         const bank = {};
         bankButton.addEventListener("click", function(e) {
             e.preventDefault();
@@ -367,7 +409,7 @@
 
             const minigame = Game.Objects.Bank.minigame;
             const parent = minigame.goodsById[0].l.parentNode;
-     
+
             if (!states.bank) {
                 minigame.tick = bank.tick;
                 parent.firstChild.style.width = "";
