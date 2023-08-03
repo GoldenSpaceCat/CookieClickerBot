@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           CookieClicker Bot
 // @namespace      https://github.com/GottZ/CookieClickerBot
-// @version        0.4.1
+// @version        0.4.2
 // @description    cookie clicker herp derp derp
 // @author         GottZ
 // @match          https://orteil.dashnet.org/cookieclicker/
@@ -390,9 +390,8 @@
 
             farm.logic = minigame.logic;
             minigame.logic = () => {
-                const retval = farm.logic.call(Game.Objects.Farm.minigame);
                 func();
-                return retval;
+                return farm.logic.call(Game.Objects.Farm.minigame);
             }
             func();
         });
