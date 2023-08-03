@@ -1,6 +1,15 @@
 # CookieClickerBot
-
+## motivation
+I like running this in background.  
+I also value my time, so by automating several parts of this game, the goal of a true idle experience comes closer without spoiling the fun too much.  
+it still takes a ton of time to complete the game with this, so I don't consider it to be a "cheat" but merely a slight speed bump with auto play characteristics.  
+I can essentially sit back and watch it play itself at this point.  
+I do have to make several decisions myself. (I have to click research for ex)  
+  
+to enable it, just hover over the options button with your mouse upon installation:  
 ![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/0eaf66d2-aebb-4bfc-b1a2-36ca97837175)
+
+if you want to install it in tampermonkey or similar, just click this [link](https://raw.githubusercontent.com/GottZ/CookieClickerBot/raw/master/CookieClickerBot.user.js).
 
 ## autoclick
 ![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/fd457daf-599d-4f3a-834d-14465f7ea72b)
