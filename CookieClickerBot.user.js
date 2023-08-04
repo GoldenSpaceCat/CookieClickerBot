@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           CookieClicker Bot
 // @namespace      https://github.com/GottZ/CookieClickerBot
-// @version        0.4.2
+// @version        0.4.3
 // @description    cookie clicker herp derp derp
 // @author         GottZ
 // @match          https://orteil.dashnet.org/cookieclicker/
@@ -366,12 +366,20 @@
             .filter(x=>x.style.display == "block")
             .filter(x=>x.style.opacity < 1)
             .map(n=>[...n.id.match(/-(\d+)-(\d+)$/)].slice(1).map(x=>+x))
-            .filter(coord => {
+            .map(coord => {
                 const [type, maturity] = minigame.getTile(...coord);
                 const plant = minigame.plantsById[type -1];
-                return !("immortal" in plant && plant.immortal);
+                return {
+                    type, maturity, plant, coord,
+                };
             })
-            .forEach(coord => minigame.clickTile(...coord));
+            .filter(({plant}) => {
+                return !(plant && "immortal" in plant && plant.immortal);
+            })
+            .forEach(({coord, plant}) => {
+                console.log("clicking expiring", plant.name, "at", coord.join("x"));
+                minigame.clickTile(...coord);
+            });
         }
         farmButton.addEventListener("click", function(e) {
             e.preventDefault();
@@ -390,10 +398,10 @@
 
             farm.logic = minigame.logic;
             minigame.logic = () => {
-                func();
+                if (minigame.nextStep <= Date.now()) func();
                 return farm.logic.call(Game.Objects.Farm.minigame);
             }
-            func();
+            //func();
         });
     };
 
