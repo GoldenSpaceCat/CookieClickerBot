@@ -43,9 +43,9 @@ This re-write will also tap into the mod interface rather than exploiting the ga
 
 ## auto harvesting plants if close to expiry
 ### Note: To ensure passive bonus is kept as long as possible, this is only ran in the instant the garden ticks.
-![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/45888797-c305-432b-b9c9-cc9afe7c4840)  
-turns into  
-![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/53725b7d-fdd8-4fee-ac52-b93df67e33b0)
+![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/fdc0fb2a-8b29-4627-b9b7-f4004467359c)  
+![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/a5e4ef5c-f283-49c1-b099-04c3916536c5)
+![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/5e02af65-61dc-4ebb-a169-f94816be6796)
 
 ## re-ordering stonks based on value
 ![image](https://github.com/GoldenSpaceCat/CookieClickerBot/assets/559564/f8ea8d95-9179-44a8-9abf-dc497d6880b2)
