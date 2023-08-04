@@ -1,7 +1,7 @@
 # GottZ CookieClicker Bot
 
 ## Installation
-If you want to install it in Tampermonkey or similar, just click this [link](https://raw.githubusercontent.com/GottZ/CookieClickerBot/raw/master/CookieClickerBot.user.js).  
+If you want to install it in Tampermonkey or similar, just click this [link](https://github.com/GoldenSpaceCat/CookieClickerBot/raw/master/CookieClickerBot.user.js).  
 STEAM Workshop will come within Q3 or Q4 of 2023. read on, to know why.
 
 ## motivation
