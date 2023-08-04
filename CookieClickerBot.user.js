@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name           CookieClicker Bot
 // @namespace      https://github.com/GottZ/CookieClickerBot
-// @version        0.4.3
+// @version        0.5.0
 // @description    cookie clicker herp derp derp
 // @author         GottZ
 // @match          https://orteil.dashnet.org/cookieclicker/
 // @match          http://orteil.dashnet.org/cookieclicker/
 // @grant          unsafeWindow
 // @run-at         document-idle
-// @updateURL      https://raw.githubusercontent.com/GottZ/CookieClickerBot/raw/master/CookieClickerBot.user.js
-// @downloadURL    https://raw.githubusercontent.com/GottZ/CookieClickerBot/raw/master/CookieClickerBot.user.js
+// @updateURL      https://github.com/GoldenSpaceCat/CookieClickerBot/raw/master/CookieClickerBot.user.js
+// @downloadURL    https://github.com/GoldenSpaceCat/CookieClickerBot/raw/master/CookieClickerBot.user.js
 // ==/UserScript==
 
 // things:
