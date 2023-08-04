@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           CookieClicker Bot
 // @namespace      https://github.com/GottZ/CookieClickerBot
-// @version        0.5.0
+// @version        0.5.1
 // @description    cookie clicker herp derp derp
 // @author         GottZ
 // @match          https://orteil.dashnet.org/cookieclicker/
@@ -362,7 +362,19 @@
         const farm = {};
         const func = () => {
             const minigame = Game.Objects.Farm.minigame;
-            [...document.getElementById("gardenPlot").querySelectorAll("div[id^=gardenTileIcon]")]
+
+            const weeds = minigame.plantsById.filter(x=>x.weed).map(x=>x.id);
+            const height = minigame.plot.length;
+            const width = minigame.plot[0].length;
+            [].concat(...minigame.plot).forEach(([type, maturity], index) => {
+                type--;
+                if (!(type in weeds)) return;
+                const [x, y] = [index % width, index / width | 0];
+                console.log("removing", minigame.plantsById[type].name, "at", `${x}x${y}`);
+                minigame.clickTile(x, y);
+            });
+
+            [...doc.getElementById("gardenPlot").querySelectorAll("div[id^=gardenTileIcon]")]
             .filter(x=>x.style.display == "block")
             .filter(x=>x.style.opacity < 1)
             .map(n=>[...n.id.match(/-(\d+)-(\d+)$/)].slice(1).map(x=>+x))
